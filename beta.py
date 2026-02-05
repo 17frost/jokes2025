@@ -2,6 +2,7 @@
 joke_starter=("Knock Knock", "Knock Knock", "Knock Knock")
 joke_2nd_line=("Calder", "Tank", "Broken pencil")
 joke_punchline=("Calder police - I've been robbed!", "You are welcome! ", "Nevermind it's pointless! ")
+new_joke_2nd_line = added_jokes = []
 #Defining joke type in Database with input response
 joke_db = {
     "robbers": [joke_starter[0], joke_2nd_line[0], joke_punchline[0]],
@@ -22,7 +23,23 @@ def ask_joke():
                 for key, value in name.items():
                     new_joke.append(value)
                 return new_joke
+             
              print(new_joke(New=response))
+             added_jokes.append(new_joke(New=response))  
+             print(new_joke_2nd_line)
+             #Restarts the ask_joke prompt to continue loop through joke database
+             def start_again():
+                 start_over = input("Do you want to hear another joke? (Y/n) ".lower())
+                 if start_over == "y":
+                     ask_joke()
+                     start_again()
+                 elif start_over == "n":
+                     print("bye!")
+                     exit
+                     return
+                 
+             start_again()
+            
              
         elif accept == "n":
             #Restarts the ask_joke prompt to continue loop through joke database
@@ -33,6 +50,7 @@ def ask_joke():
                     start_again()
                 elif start_over == "n":
                     print("bye!")
+                    exit
                     return
                 
             start_again()
@@ -59,6 +77,7 @@ def start_again():
         start_again()
     elif start_over == "n":
         print("bye!")
+        exit
         return
     
 start_again()
