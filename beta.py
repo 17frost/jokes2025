@@ -3,6 +3,9 @@ joke_starter=("Knock Knock", "Knock Knock", "Knock Knock")
 joke_2nd_line=("Calder", "Tank", "Broken pencil")
 joke_punchline=("Calder police - I've been robbed!", "You are welcome! ", "Nevermind it's pointless! ")
 new_joke_2nd_line = added_jokes = []
+#tuple_line = tuple(new_joke_2nd_line)
+new_punchline0 = added_punchlines = []
+#tuple_punch = tuple(new_punchline0)
 #Defining joke type in Database with input response
 joke_db = {
     "robbers": [joke_starter[0], joke_2nd_line[0], joke_punchline[0]],
@@ -27,6 +30,16 @@ def ask_joke():
              print(new_joke(New=response))
              added_jokes.append(new_joke(New=response))  
              print(new_joke_2nd_line)
+             if len(added_jokes) == 1:
+                 punchline_response = input("what would you like the punchline to be?")
+                 def new_punchline(**punch):
+                     new_punchline = []
+                     for key, value in punch.items():
+                         new_punchline.append(value)
+                     return new_punchline
+                 print(new_punchline(Punchline=punchline_response))
+                 added_punchlines.append(new_punchline(Punchline=punchline_response))
+             print(new_punchline0)
              #Restarts the ask_joke prompt to continue loop through joke database
              def start_again():
                  start_over = input("Do you want to hear another joke? (Y/n) ".lower())
