@@ -50,13 +50,13 @@ subject = input("Do you want to hear a joke about robbers, tanks, or pencils? ")
 def joke(subject):
     if subject == robbers:
             print(f"here'a joke about, {subject}")
-                elif subject == tanks:
-                        print(f"here'a joke about, {subject}")
-                            elif subject == pencils:
-                                    print(f"here'a joke about, {subject}")
-                                        return
+    elif subject == tanks:
+        print(f"here'a joke about, {subject}")
+    elif subject == pencils:
+        print(f"here'a joke about, {subject}")
+    return
 
-                                        print(subject)
+print(subject)
 
 
 if joke == "no":
@@ -102,13 +102,13 @@ if input() == "Calder":
     input("Calder")
     print("Calder police - I've been robbed!")
     another = input("Do you want to hear another joke or are you finished? ")
-    elif input() == "Tank":
-        input("Knock Knock ")
-        input("Tank ")
-        input("You are welcome! ")
-        another = input("Do you want to hear another joke or are you finished? ")
-        elif input() == "Pencil":
-             input("Knock Knock ")
-             input("Broken pencil ")
-             input("Nevermind, it's pointless! ")
-             another = input("Do you want to hear another joke or are you finished? ")
+elif input() == "Tank":
+    input("Knock Knock ")
+    input("Tank ")
+    input("You are welcome! ")
+    another = input("Do you want to hear another joke or are you finished? ")
+elif input() == "Pencil":
+    input("Knock Knock ")
+    input("Broken pencil ")
+    input("Nevermind, it's pointless! ")
+    another = input("Do you want to hear another joke or are you finished? ")

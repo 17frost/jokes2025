@@ -75,7 +75,7 @@ start_again()
  def new_joke(**name):
     input(f"what would you like to call this joke?")
     new_joke = []
-        for key, value in name.items():
-            new_joke.append(value)
-        return new_joke
+    for key, value in name.items():
+        new_joke.append(value)
+    return new_joke
 

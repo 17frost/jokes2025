@@ -13,14 +13,37 @@ joke_db = {
 def ask_joke():
     subject = input("Do you want to hear a joke about robbers, tanks, or pencils? ")
 
+    if subject not in joke_db:
+        accept = input("Sorry, I only know jokes about robbers, tanks, or pencils. Would u like to add one yourself? (Y/n)")
+        if accept == "Y":
+             response = input("what would you like to call this joke?:")
+             def new_joke(**name):
+                new_joke = []
+                for key, value in name.items():
+                    new_joke.append(value)
+                return new_joke
+             print(new_joke(New=response))
+             
+        elif accept == "n":
+            #Restarts the ask_joke prompt to continue loop through joke database
+            def start_again():
+                start_over = input("Do you want to hear another joke? (Y/n) ".lower())
+                if start_over == "y":
+                    ask_joke()
+                    start_again()
+                elif start_over == "n":
+                    print("bye!")
+                    return
+                
+            start_again()
+        
+
     joke_lines = joke_db[subject]
     
     print(joke_lines)
     # Indexing joke_db and printing them in respect to user input. Selects the joke from the Joke_2nd_line options.
 
-    if subject not in joke_db:
-        input("Sorry, I only know jokes about robbers, tanks, or pencils. Would u like to add one yourself? (Y/n)")
-        print(joke_lines)
+
     for subject in joke_db:
         for i, line in enumerate(joke_lines):
             print(f"{line}")
