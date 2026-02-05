@@ -7,19 +7,23 @@ new_joke_2nd_line = added_jokes = []
 new_punchline0 = added_punchlines = []
 #tuple_punch = tuple(new_punchline0)
 #Defining joke type in Database with input response
-joke_db = {
-    "robbers": [joke_starter[0], joke_2nd_line[0], joke_punchline[0]],
-    "tanks": [joke_starter[1], joke_2nd_line[1], joke_punchline[1]],
-    "pencils": [joke_starter[2], joke_2nd_line[2], joke_punchline[2]],
-}
+joke_db = [{
+    "robbers": (joke_starter[0], joke_2nd_line[0], joke_punchline[0]),
+    "tanks": (joke_starter[1], joke_2nd_line[1], joke_punchline[1]),
+    "pencils": (joke_starter[2], joke_2nd_line[2], joke_punchline[2]),
+}]
+
+custom_joke_db = (
+    
+)
 #Getting input from user asking for which joke user would like to hear in the database
 
 def ask_joke():
     subject = input("Do you want to hear a joke about robbers, tanks, or pencils? ")
 
     if subject not in joke_db:
-        accept = input("Sorry, I only know jokes about robbers, tanks, or pencils. Would u like to add one yourself? (Y/n)")
-        if accept == "Y":
+        accept = input("Sorry, I only know jokes about robbers, tanks, or pencils. Would u like to add one yourself? (Y/n)").lower()
+        if accept == "y":
              response = input("what would you like to call this joke?:")
              def new_joke(**name):
                 new_joke = []
@@ -57,7 +61,7 @@ def ask_joke():
         elif accept == "n":
             #Restarts the ask_joke prompt to continue loop through joke database
             def start_again():
-                start_over = input("Do you want to hear another joke? (Y/n) ".lower())
+                start_over = input("Do you want to hear another joke? (Y/n) ").lower()
                 if start_over == "y":
                     ask_joke()
                     start_again()
