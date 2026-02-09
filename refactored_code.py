@@ -60,7 +60,7 @@ def ask_joke(subject=None):
     ask_again()
 
 def ask_again():
-    """Helper function to ask if user wants another joke"""
+   #function to ask if user wants another joke
     start_over = input("Do you want to hear another joke? (Y/n) ").lower()
     if start_over == "y":
         ask_joke()
