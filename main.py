@@ -112,3 +112,17 @@ elif input() == "Pencil":
     input("Broken pencil ")
     input("Nevermind, it's pointless! ")
     another = input("Do you want to hear another joke or are you finished? ")
+
+#  def new_joke(decision):
+#     print(f"what would you like to call this joke?"
+
+#     if subject not in joke_db:
+#         print("Sorry, I only know jokes about robbers, tanks, or pencils!")
+#         return
+
+# joke_line = joke_db[subject]
+
+# subject = input("Do you want to hear a joke about robbers, tanks, or pencils? ")
+
+# def execute_joke(subject):
+#     if subject = robbers 
