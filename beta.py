@@ -2,10 +2,6 @@
 joke_starter=("Knock Knock", "Knock Knock", "Knock Knock")
 joke_2nd_line=("Calder", "Tank", "Broken pencil")
 joke_punchline=("Calder police - I've been robbed!", "You are welcome! ", "Nevermind it's pointless! ")
-new_joke_2nd_line = added_jokes = []
-#tuple_line = tuple(new_joke_2nd_line)
-new_punchline0 = added_punchlines = []
-#tuple_punch = tuple(new_punchline0)
 #Defining joke type in Database with input response
 joke_db = {
     "robbers": [joke_starter[0], joke_2nd_line[0], joke_punchline[0]],
@@ -13,98 +9,63 @@ joke_db = {
     "pencils": [joke_starter[2], joke_2nd_line[2], joke_punchline[2]],
 }
 
-custom_db = subject1 = (joke_starter[0], new_joke_2nd_line, new_punchline0)
+# Dictionary to store custom jokes added by user
+custom_db = {}
 #Getting input from user asking for which joke user would like to hear in the database
 
-def ask_joke():
-    subject = input("Do you want to hear a joke about robbers, tanks, or pencils? ")
+def ask_joke(subject=None):
+    # If no subject provided, ask the user
+    if subject is None:
+        subject = input("Do you want to hear a joke about robbers, tanks, or pencils? ")
 
-    if subject not in joke_db:
-        accept = input("Sorry, I only know jokes about robbers, tanks, or pencils. Would u like to add one yourself? (Y/n)")
+    # Check if joke exists in either database
+    if subject not in joke_db and subject not in custom_db:
+        accept = input("Sorry, I don't know that joke. Would you like to add one yourself? (Y/n) ")
         if accept.lower() == "y":
-             response = input("what would you like to call this joke?:")
-             def new_joke(**name):
-                new_joke = []
-                for key, value in name.items():
-                    new_joke.append(value)
-                print(custom_db)
-                return new_joke
-
-             print(new_joke(New=response))
-             added_jokes.append(new_joke(New=response))  
-             print(new_joke_2nd_line)
-             if len(added_jokes) == 1:
-                 punchline_response = input("what would you like the punchline to be?")
-                 def new_punchline(**punch):
-                     new_punchline = []
-                     for key, value in punch.items():
-                         new_punchline.append(value)
-                     return new_punchline
-                 print(new_punchline(Punchline=punchline_response))
-                 added_punchlines.append(new_punchline(Punchline=punchline_response))
-             print(new_punchline0)
-             print(custom_db)
-             #Restarts the ask_joke prompt to continue loop through joke database
-             def start_again():
-                 start_over = input("Do you want to hear another joke? (Y/n) ")
-                 if start_over.lower() == "y":
-                     ask_joke()
-                     start_again()
-                 elif start_over == "n":
-                     print("bye!")
-                     exit
-                     return
-
-             start_again()
+            # Ask for all three parts of the joke
+            second_line = input("What is the second line of the joke? ")
+            punchline = input("What is the punchline? ")
+            
+            # Add to custom_db as a new entry
+            custom_db[subject] = ["Knock Knock", second_line, punchline]
+            print(f"Great! Added '{subject}' to the joke database!")
+            
+            # Ask if they want to hear another joke
+            ask_again()
+            return
+        elif accept.lower() == "n":
+            ask_again()
+            return
+        else:
+            ask_again()
+            return
 
 
-        elif accept == "n":
-            #Restarts the ask_joke prompt to continue loop through joke database
-            def start_again():
-                start_over = input("Do you want to hear another joke? (Y/n) ".lower())
-                if start_over == "y":
-                    ask_joke()
-                    start_again()
-                elif start_over == "n":
-                    print("bye!")
-                    exit
-                    return
+    # Get joke from whichever database it's in
+    if subject in joke_db:
+        joke_lines = joke_db[subject]
+    else:
+        joke_lines = custom_db[subject]
 
-            start_again()
-
-
-    joke_lines = joke_db[subject]
-    custom_joke_line = custom_db[subject]
-
-    print(joke_lines)
-    # Indexing joke_db and printing them in respect to user input. Selects the joke from the Joke_2nd_line options.
-
-
-    for subject in joke_db:
-        for i, line in enumerate(joke_lines):
-            print(f"{line}")
-            input()
-        return
-    for subject in custom_db:
-        for i, line in enumerate(custom_joke_line):
-            print(f"{line}")
-            input()
-        return
-
-ask_joke()
+    # Display the joke line by line
+    for line in joke_lines:
+        print(f"{line}")
+        input()
     
-#Restarts the ask_joke prompt to continue loop through joke database
-def start_again():
-    start_over = input("Do you want to hear another joke? (Y/n) ".lower())
+    # Ask if they want another joke
+    ask_again()
+
+def ask_again():
+    """Helper function to ask if user wants another joke"""
+    start_over = input("Do you want to hear another joke? (Y/n) ").lower()
     if start_over == "y":
         ask_joke()
-        start_again()
     elif start_over == "n":
         print("bye!")
-        exit
-        return
+    # If neither y nor n, just exit
 
-start_again()
+# Start the joke program
+ask_joke()
 
 
 
