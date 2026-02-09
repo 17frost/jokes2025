@@ -27,8 +27,11 @@ def ask_joke(subject=None):
             second_line = input("What is the second line of the joke? ")
             punchline = input("What is the punchline? ")
             
-            # Add to custom_db as a new entry
-            custom_db[subject] = ["Knock Knock", second_line, punchline]
+            # Add to custom_db as a new entry using append (since lists are mutable and allow dynamic additions)
+            custom_db[subject] = []
+            custom_db[subject].append("Knock Knock")
+            custom_db[subject].append(second_line)
+            custom_db[subject].append(punchline)
             print(f"Great! Added '{subject}' to the joke database!")
             
             # Ask if they want to hear another joke
@@ -64,6 +67,9 @@ def ask_again():
     elif start_over == "n":
         print("bye!")
     # If neither y nor n, just exit
+    else:
+        print("Invalid input. Exiting...")
+        exit()
 
 # Start the joke program
 ask_joke()
